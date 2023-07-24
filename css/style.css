@@ -243,16 +243,36 @@ body{
     display: grid;
     grid-template-columns: auto auto;
     gap: 70px 25px;
-    counter-reset: number;
     padding-bottom: 92px;
+    counter-reset: number;
 }
 .steps__item{
     display: flex;
     gap: 40px;
     list-style-type: none;
+    position: relative;
+}
+.steps__item::before{
+    counter-increment: number;
+    content: '0' counter(number);
+    font-family: var(--font-secondary);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    font-size: 30px;
+    color: var(--bdCart-candle);
+
+}
+.steps__item.steps__item--even::before{
+    left: auto;
+    right: 0;
+}
+.steps__item:nth-child(n+10)::before{
+    content: counter(number);
 }
 .steps__item-text{
     flex-basis: 174px;
+    padding-bottom: 40px;
 }
 
 /*footer*/
@@ -278,7 +298,9 @@ body{
 }
 
 
+@media (max-width: 1100px) {
 
+}
 @media (max-width: 1000px) {
     .container{
         padding: 0 20px;
